@@ -1,0 +1,15 @@
+<!-- Add this script inside the <head> or <body> of your public/404.html -->
+    <script type="text/javascript">
+        // Single page application fallback redirect for GitHub Pages
+        // Credits: https://github.com/rafgraph/spa-github-pages
+        var segmentCount = 1; // Set to 1 for <username>.github.io/<repository-name>
+      
+        var l = window.location;
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?p=/' +
+          l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+        );
+      </script>

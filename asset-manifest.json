@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/green-dot-ipl/static/css/main.88479065.css",
+    "main.js": "/green-dot-ipl/static/js/main.6f64f9a4.js",
+    "index.html": "/green-dot-ipl/index.html",
+    "main.88479065.css.map": "/green-dot-ipl/static/css/main.88479065.css.map",
+    "main.6f64f9a4.js.map": "/green-dot-ipl/static/js/main.6f64f9a4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.88479065.css",
+    "static/js/main.6f64f9a4.js"
+  ]
+}
