@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Jasprit Bumrah",
+    "team": "MI",
+    "dotBalls": 465
+  },
+  {
+    "id": 2,
+    "name": "Rashid Khan",
+    "team": "GT",
+    "dotBalls": 198
+  },
+  {
+    "id": 3,
+    "name": "Trent Boult",
+    "team": "RR",
+    "dotBalls": 185
+  },
+  {
+    "id": 4,
+    "name": "Mohammad Shami",
+    "team": "GT",
+    "dotBalls": 170
+  },
+  {
+    "id": 5,
+    "name": "Yuzvendra Chahal",
+    "team": "RR",
+    "dotBalls": 165
+  },
+  {
+    "id": 6,
+    "name": "Bhuvneshwar Kumar",
+    "team": "SRH",
+    "dotBalls": 155
+  },
+  {
+    "id": 7,
+    "name": "Kagiso Rabada",
+    "team": "PBKS",
+    "dotBalls": 150
+  },
+  {
+    "id": 8,
+    "name": "Harshal Patel",
+    "team": "RCB",
+    "dotBalls": 145
+  },
+  {
+    "id": 9,
+    "name": "Axar Patel",
+    "team": "DC",
+    "dotBalls": 140
+  },
+  {
+    "id": 10,
+    "name": "Ravi Bishnoi",
+    "team": "LSG",
+    "dotBalls": 135
+  },
+  {
+    "id": 11,
+    "name": "Mukesh Choudhary",
+    "team": "CSK",
+    "dotBalls": 130
+  },
+  {
+    "id": 12,
+    "name": "Varun Chakravarthy",
+    "team": "KKR",
+    "dotBalls": 125
+  },
+  {
+    "id": 13,
+    "name": "Piyush Chawla",
+    "team": "MI",
+    "dotBalls": 110
+  },
+  {
+    "id": 14,
+    "name": "Matheesha Pathirana",
+    "team": "CSK",
+    "dotBalls": 105
+  }
+]

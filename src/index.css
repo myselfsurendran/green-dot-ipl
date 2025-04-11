@@ -1,13 +1,575 @@
-body {
+/* Basic Reset & Body Styling */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f4f5f7; /* Light gray background */
+  color: #374151; /* Default text color */
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Header & Navigation */
+header {
+  background: linear-gradient(to right, #10B981, #3B82F6); /* Green to Blue gradient */
+  color: white;
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+}
+.logo span {
+   margin-right: 0.5rem; /* 8px */
+}
+
+.desktop-nav {
+  display: none; /* Hidden on mobile by default */
+}
+.desktop-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* 24px */
+}
+.desktop-nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.2s ease, border-bottom 0.2s ease; /* Added border transition */
+  border-bottom: 2px solid transparent; /* Add transparent border for spacing */
+}
+.desktop-nav a:hover, .desktop-nav a:focus {
+  color: #D1FAE5; /* Light green on hover */
+  border-bottom: 2px solid #D1FAE5;
+}
+
+.mobile-menu-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.75rem; /* Larger icon */
+  cursor: pointer;
+  padding: 0.5rem;
+  display: block; /* Ensure it's visible on mobile */
+}
+
+.mobile-menu {
+ /* display: none; JS will toggle this */
+ background-color: #059669; /* Slightly darker green */
+ padding: 1rem 0;
+ position: absolute; /* Position it below the header */
+ top: 100%; /* Place it right below the header */
+ left: 0;
+ width: 100%;
+ z-index: 40; /* Below header but above content */
+ box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+ max-height: 0; /* Start height 0 for transition */
+ overflow: hidden; /* Hide content when collapsed */
+ transition: max-height 0.3s ease-out; /* Smooth transition */
+}
+.mobile-menu.open {
+  max-height: 300px; /* Adjust as needed to fit content */
+}
+.mobile-menu ul {
+  list-style: none;
+  padding-left: 1rem; /* Indent mobile links slightly */
+}
+.mobile-menu li {
+  margin-bottom: 0.75rem;
+}
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 1rem; /* Added horizontal padding */
+   border-radius: 4px;
+   transition: background-color 0.2s ease;
+}
+.mobile-menu a:hover, .mobile-menu a:focus {
+   background-color: rgba(255, 255, 255, 0.1);
+}
+/* Basic theme toggle button style */
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.2s ease;
+}
+.theme-toggle:hover {
+   background: rgba(255, 255, 255, 0.3);
+}
+.mobile-menu .theme-toggle {
+  width: calc(100% - 2rem); /* Adjust width in mobile menu */
+  margin: 1rem auto 0 auto; /* Center and add margin */
+  text-align: left;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+/* Main Content */
+main {
+  padding-top: 2rem; /* 32px */
+  padding-bottom: 2rem; /* 32px */
+}
+
+/* Section Styling */
+section {
+  margin-bottom: 3rem; /* 48px */
+  padding: 1.5rem; /* 24px */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+section h2 {
+  font-size: 2rem; /* 32px */
+  font-weight: 700;
+  color: #1F2937; /* Darker gray */
+  margin-bottom: 1.5rem; /* 24px */
+  text-align: center;
+}
+section h3 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  color: #111827; /* Even darker gray */
+  margin-bottom: 1rem; /* 16px */
+  text-align: center;
+}
+
+/* Hero Section */
+#hero {
+  text-align: center;
+  background: #fff; /* White background for contrast */
+  position: relative;
+  overflow: hidden; /* For potential background effects */
+}
+#hero h1 {
+  font-size: 2.5rem; /* 40px */
+  font-weight: 800;
+  color: #059669; /* Primary Green */
+  margin-bottom: 1rem; /* 16px */
+}
+#hero p {
+  font-size: 1.125rem; /* 18px */
+  color: #4B5563; /* Medium gray */
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto; /* 24px bottom margin */
+}
+#totalTreesCounter {
+  font-size: 4rem; /* 64px */
+  font-weight: 800;
+  color: #10B981; /* Brighter Green */
+  display: block;
+  line-height: 1.1;
+  margin-bottom: 0.5rem; /* 8px */
+}
+#hero .counter-label {
+   font-size: 1.25rem; /* 20px */
+   color: #374151;
+}
+.growing-tree-animation {
+  margin-top: 1rem; /* 16px */
+  font-size: 3rem; /* 48px */
+  color: #10B981;
+  /* Basic pulse animation placeholder */
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+
+/* Grid Layout for Cards */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Default: one column */
+  gap: 1.5rem; /* 24px */
+}
+
+/* Card Styling (Impact, Leaderboards, Updates) */
+.card {
+  background-color: #ffffff;
+  padding: 1.5rem; /* 24px */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  height: 100%; /* Make cards in a grid row equal height */
+  display: flex; /* Enable flex for vertical alignment */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+.card .icon {
+  font-size: 3rem; /* 48px */
+  margin-bottom: 0.75rem; /* 12px */
+}
+.card h3 { /* Card titles */
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  margin-bottom: 0.5rem; /* 8px */
+  color: #1F2937;
+}
+.card p.metric { /* Main number in card */
+  font-size: 2rem; /* 32px */
+  font-weight: 700;
+  margin-bottom: 0.25rem; /* 4px */
+}
+.card p.sub-metric { /* Smaller text like '(X Football Fields)' */
+  font-size: 0.875rem; /* 14px */
+  color: #6B7280; /* Lighter Gray */
+  margin-top: 0.25rem; /* 4px */
+}
+/* Specific Card Colors */
+.card .icon.green { color: #10B981; }
+.card .metric.green { color: #059669; }
+.card .icon.blue { color: #3B82F6; }
+.card .metric.blue { color: #2563EB; }
+.card .icon.orange { color: #F59E0B; }
+.card .metric.orange { color: #D97706; }
+
+
+/* Leaderboard Styling */
+.leaderboard-card { /* Container for a leaderboard list */
+   padding: 1.5rem;
+   background-color: #fff;
+   border-radius: 8px;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.leaderboard-card h3 {
+  margin-bottom: 1.5rem; /* More space below title */
+}
+
+.leaderboard-list {
+  list-style: none; /* Remove default numbers */
+  padding-left: 0;
+  counter-reset: leaderboard-counter;
+  margin-top: 1rem;
+}
+.leaderboard-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0.5rem; /* 12px 8px */
+  border-bottom: 1px solid #E5E7EB; /* Light gray border */
+  counter-increment: leaderboard-counter;
+  position: relative;
+  margin-left: 2.5rem; /* Increased space for counter */
+}
+.leaderboard-list li::before {
+   content: counter(leaderboard-counter);
+   position: absolute;
+   left: -2.5rem; /* Position counter outside */
+   top: 50%;
+   transform: translateY(-50%);
+   font-weight: 600;
+   color: #6B7280;
+   background-color: #f4f5f7;
+   border-radius: 50%;
+   width: 1.75rem; /* Larger counter circle */
+   height: 1.75rem;
+   text-align: center;
+   line-height: 1.75rem;
+   font-size: 0.875rem;
+}
+.leaderboard-list li:last-child {
+  border-bottom: none;
+}
+.leaderboard-list .player-team-name {
+  font-weight: 500;
+  color: #1F2937;
+}
+.leaderboard-list .player-team-name .team {
+   font-size: 0.875rem; /* 14px */
+   color: #6B7280;
+   margin-left: 0.25rem;
+}
+.leaderboard-list .score {
+  font-weight: 600;
+  color: #059669; /* Green for score */
+  display: flex;
+  align-items: center;
+  gap: 0.3rem; /* Space between icon and text */
+  white-space: nowrap; /* Prevent score wrapping */
+}
+.leaderboard-link {
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem; /* 24px */
+  color: #2563EB; /* Blue */
+  font-weight: 500;
+  text-decoration: none;
+}
+.leaderboard-link:hover {
+  text-decoration: underline;
+}
+
+
+/* Visualization Placeholder */
+#visualization p {
+   max-width: 700px;
+   margin-left: auto;
+   margin-right: auto;
+   color: #4B5563;
+   margin-bottom: 1.5rem;
+}
+#tree-map-visual {
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  background-color: #E0F2F7; /* Light cyan/green */
+  border: 1px dashed #A3E635; /* Dashed green border */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #6B7280;
+  font-style: italic;
+  margin-bottom: 1.5rem; /* 24px */
+}
+.visualization-controls {
+  margin-top: 1rem;
+}
+#visualFilter {
+  padding: 0.75rem 1rem; /* 12px 16px */
+  border: 1px solid #D1D5DB; /* Gray border */
+  border-radius: 6px;
+  min-width: 200px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+
+/* Recent Updates / Match Cards */
+#updates .card { /* Reuse card style */
+   text-align: left; /* Align text left for match cards */
+   justify-content: flex-start; /* Align content to top */
+}
+#updates .match-date {
+   font-size: 0.875rem; /* 14px */
+   color: #6B7280;
+   margin-bottom: 0.25rem; /* 4px */
+}
+#updates h4 { /* Match title */
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  margin-bottom: 0.5rem; /* 8px */
+  color: #1F2937;
+  text-align: left; /* Ensure left alignment */
+}
+#updates .trees-planted {
+  font-weight: 700;
+  color: #059669;
+  margin-bottom: 0.75rem; /* 12px */
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+#updates .match-link {
+   font-size: 0.875rem; /* 14px */
+   color: #2563EB;
+   text-decoration: none;
+   font-weight: 500;
+   margin-top: auto; /* Push link to bottom if card height varies */
+}
+#updates .match-link:hover {
+   text-decoration: underline;
+}
+
+
+/* About / CTA Section */
+#about {
+  background-color: #047857; /* Darker Green */
+  color: #D1FAE5; /* Light green text for contrast */
+  text-align: center;
+  border-radius: 8px;
+}
+#about h2 {
+  color: #ffffff;
+}
+#about p {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem; /* 24px */
+  color: #A7F3D0; /* Slightly lighter green */
+}
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+  gap: 1rem; /* 16px */
+}
+.cta-button {
+  padding: 0.75rem 1.5rem; /* 12px 24px */
+  border: none;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.cta-button:active {
+  transform: scale(0.98);
+}
+.cta-button.primary {
+  background-color: #ffffff;
+  color: #047857; /* Dark green text */
+}
+.cta-button.primary:hover {
+  background-color: #ECFDF5; /* Very light green */
+}
+.cta-button.secondary {
+  background-color: #3B82F6; /* Blue */
+  color: white;
+}
+.cta-button.secondary:hover {
+  background-color: #2563EB; /* Darker Blue */
+}
+
+
+/* Footer */
+footer {
+  background-color: #1F2937; /* Dark Gray */
+  color: #D1D5DB; /* Light Gray Text */
+  padding: 2.5rem 0 1.5rem 0; /* 40px top, 24px bottom */
+  margin-top: 3rem; /* 48px */
+  text-align: center;
+}
+.footer-logo a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  margin-bottom: 1rem; /* 16px */
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* 24px */
+  margin-bottom: 1.5rem; /* 24px */
+}
+.social-links a {
+  color: #9CA3AF; /* Medium Gray */
+  font-size: 1.5rem; /* 24px */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.social-links a:hover {
+  color: white;
+}
+footer p {
+  font-size: 0.875rem; /* 14px */
+  margin-bottom: 0.5rem; /* 8px */
+}
+footer .footer-links {
+  margin-top: 1rem; /* 16px */
+  font-size: 0.75rem; /* 12px */
+}
+footer .footer-links a {
+  color: #9CA3AF;
+  text-decoration: none;
+  margin: 0 0.5rem; /* 8px */
+}
+footer .footer-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+
+/* --- Responsive Design --- */
+
+/* Medium screens and up (tablets, small laptops) */
+@media (min-width: 768px) {
+  .mobile-menu-button {
+      display: none; /* Hide mobile button */
+  }
+  .desktop-nav {
+      display: flex; /* Show desktop nav */
+  }
+  .mobile-menu {
+      display: none !important; /* Ensure mobile menu is hidden */
+  }
+   #hero h1 {
+      font-size: 3rem; /* 48px */
+   }
+   #totalTreesCounter {
+       font-size: 5rem; /* 80px */
+   }
+   /* Adjust grid columns */
+  #impact .grid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+   #leaderboards .grid {
+       grid-template-columns: repeat(2, 1fr);
+   }
+  #updates .grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+   #tree-map-visual {
+      height: 400px;
+  }
+}
+
+/* Large screens and up (desktops) */
+@media (min-width: 1024px) {
+  #hero h1 {
+      font-size: 3.5rem; /* 56px */
+  }
+  #totalTreesCounter {
+       font-size: 6rem; /* 96px */
+   }
+  #updates .grid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+   #tree-map-visual {
+      height: 450px;
+  }
 }
